@@ -1,33 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Navbar } from './components/layout/Navbar'
+import { Footer } from './components/layout/Footer'
+import { Hero } from './sections/Hero'
+import { SocialProof } from './sections/SocialProof'
+import { Mission } from './sections/Mission'
+import { Mirror } from './sections/Mirror'
+import { About } from './sections/About'
+import { Journey } from './sections/Journey'
+import { Testimonials } from './sections/Testimonials'
+import { FAQ } from './sections/FAQ'
+import { FinalCTA } from './sections/FinalCTA'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Navbar />
+      <main id="main-content" tabIndex={-1}>
+        <Hero />
+        <SocialProof />
+        <Mission />
+        <Mirror />
+        <About />
+        <Journey />
+        <Testimonials />
+        <FAQ />
+        <FinalCTA />
+      </main>
+      <Footer />
     </>
   )
 }
