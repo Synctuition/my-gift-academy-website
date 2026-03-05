@@ -35,26 +35,47 @@ function FeatureIcon({ name }: { name: string }) {
   return <>{icons[name] || null}</>
 }
 
+const pillarImages = [
+  '/assets/stills/intimate-closeup-1200.webp',
+  '/assets/stills/bedside-family-1600.webp',
+  '/assets/stills/manifesto-clock-2000.webp',
+  '/assets/stills/manifesto-figure-2000.webp',
+]
+
 function PillarCard({ pillar, index }: { pillar: (typeof aboutContent.pillars)[number]; index: number }) {
   const { ref, isVisible } = useScrollReveal()
 
   return (
     <div
       ref={ref}
-      className={`card-glow rounded-xl p-8 transition-[opacity,transform] duration-700 ease-out-expo ${
+      className={`card-glow rounded-xl overflow-hidden transition-[opacity,transform] duration-700 ease-out-expo ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
       style={{ transitionDelay: `${index * 120}ms` }}
     >
-      <div className="w-12 h-12 rounded-lg bg-gold-500/10 flex items-center justify-center text-accent mb-5">
-        <FeatureIcon name={pillar.icon} />
+      {/* Pillar image */}
+      <div className="relative h-40 overflow-hidden">
+        <img
+          src={pillarImages[index]}
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-base-900 via-base-900/40 to-transparent" />
       </div>
-      <h3 className="font-[family-name:var(--font-display)] text-[length:var(--font-size-h3)] font-bold text-text-primary mb-3">
-        {pillar.title}
-      </h3>
-      <p className="text-text-secondary leading-relaxed">
-        {pillar.description}
-      </p>
+
+      <div className="p-8">
+        <div className="w-12 h-12 rounded-lg bg-gold-500/10 flex items-center justify-center text-accent mb-5">
+          <FeatureIcon name={pillar.icon} />
+        </div>
+        <h3 className="font-[family-name:var(--font-display)] text-[length:var(--font-size-h3)] font-bold text-text-primary mb-3">
+          {pillar.title}
+        </h3>
+        <p className="text-text-secondary leading-relaxed">
+          {pillar.description}
+        </p>
+      </div>
     </div>
   )
 }

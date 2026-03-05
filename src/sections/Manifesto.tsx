@@ -1,4 +1,3 @@
-import { useRef, useEffect, useCallback } from 'react'
 import { manifestoBeats, type ManifestoBeat, type BeatVariant } from '../data/content'
 import { Container } from '../components/ui/Container'
 import { GoldDivider } from '../components/ui/GoldDivider'
@@ -12,25 +11,25 @@ const variantConfig: Record<
   declaration: {
     wrapperClass: 'min-h-[50vh] md:min-h-[60vh] flex items-center justify-center',
     textClass:
-      'font-[family-name:var(--font-serif)] text-[length:var(--font-size-h1)] leading-[1.15] text-shimmer font-normal whitespace-pre-line drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)]',
+      'font-[family-name:var(--font-serif)] text-[length:var(--font-size-h1)] leading-[1.15] text-shimmer font-normal whitespace-pre-line',
     threshold: 0.25,
   },
   emphasis: {
     wrapperClass: 'py-8 md:py-12',
     textClass:
-      'font-[family-name:var(--font-serif)] text-[length:var(--font-size-h2)] leading-[1.3] text-text-primary drop-shadow-[0_1px_8px_rgba(0,0,0,0.6)]',
+      'font-[family-name:var(--font-serif)] text-[length:var(--font-size-h2)] leading-[1.3] text-text-primary',
     threshold: 0.3,
   },
   statement: {
     wrapperClass: 'py-5 md:py-8',
     textClass:
-      'text-[length:var(--font-size-body-lg)] md:text-xl leading-[1.7] text-text-secondary drop-shadow-[0_1px_6px_rgba(0,0,0,0.5)]',
+      'text-[length:var(--font-size-body-lg)] md:text-xl leading-[1.7] text-text-secondary',
     threshold: 0.3,
   },
   whisper: {
     wrapperClass: 'py-8 md:py-12',
     textClass:
-      'text-base md:text-lg italic text-text-muted tracking-wide drop-shadow-[0_1px_6px_rgba(0,0,0,0.5)]',
+      'text-base md:text-lg italic text-text-muted tracking-wide',
     threshold: 0.4,
   },
 }
@@ -85,100 +84,38 @@ function ManifestoBeatBlock({ beat, index }: { beat: ManifestoBeat; index: numbe
   )
 }
 
-/* ─── Scroll-scrub video hook (supports multiple video elements) ─── */
-function useScrollScrubVideo() {
-  const videosRef = useRef<HTMLVideoElement[]>([])
-  const sectionRef = useRef<HTMLElement>(null)
-  const rafId = useRef(0)
-  const isActive = useRef(false)
-
-  const addVideoRef = useCallback((el: HTMLVideoElement | null) => {
-    if (el && !videosRef.current.includes(el)) videosRef.current.push(el)
-  }, [])
-
-  const scrub = useCallback(() => {
-    const section = sectionRef.current
-    if (!section || !isActive.current) return
-
-    const rect = section.getBoundingClientRect()
-    const viewH = window.innerHeight
-    const totalTravel = rect.height + viewH
-    const traveled = viewH - rect.top
-    const progress = Math.max(0, Math.min(1, traveled / totalTravel))
-
-    for (const video of videosRef.current) {
-      if (video.duration) video.currentTime = progress * video.duration
-    }
-
-    rafId.current = requestAnimationFrame(scrub)
-  }, [])
-
-  useEffect(() => {
-    const section = sectionRef.current
-    if (!section) return
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          isActive.current = true
-          rafId.current = requestAnimationFrame(scrub)
-        } else {
-          isActive.current = false
-          cancelAnimationFrame(rafId.current)
-        }
-      },
-      { threshold: 0 },
-    )
-
-    observer.observe(section)
-    return () => {
-      observer.disconnect()
-      cancelAnimationFrame(rafId.current)
-    }
-  }, [scrub])
-
-  return { addVideoRef, sectionRef }
-}
-
 /* ─── Section ─── */
 export function Manifesto() {
   const { ref: dividerRef, isVisible: dividerVisible } = useScrollReveal()
-  const { addVideoRef, sectionRef } = useScrollScrubVideo()
 
   return (
     <section
-      ref={sectionRef}
       id="manifesto"
       className="relative py-16 md:py-24 overflow-hidden"
     >
       {/* Background: deep dark gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-surface via-base-900 to-surface" />
 
-      {/* Scroll-scrub video background — 2 layers */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Back layer: blurred cover fill for edges */}
-        <video
-          ref={addVideoRef}
-          src="/assets/video/manifesto-scrub.mp4"
-          muted
-          playsInline
-          preload="metadata"
+      {/* Subtle photographic backgrounds — restrained opacity */}
+      <div className="absolute inset-0 top-0 h-1/2 overflow-hidden">
+        <img
+          src="/assets/stills/manifesto-clock-2000.webp"
+          loading="lazy"
+          alt=""
           aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover opacity-[0.10] blur-[12px] saturate-50"
+          className="absolute inset-0 w-full h-full object-cover opacity-[0.06]"
         />
-        {/* Front layer: contained, readable footage */}
-        <video
-          ref={addVideoRef}
-          src="/assets/video/manifesto-scrub.mp4"
-          muted
-          playsInline
-          preload="metadata"
-          aria-hidden="true"
-          className="absolute inset-0 w-full h-auto max-h-full object-contain mx-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.25] saturate-[1.1] contrast-[1.05] mix-blend-screen"
-        />
-        {/* Edge gradients for text legibility */}
         <div className="absolute inset-0 bg-gradient-to-b from-surface via-transparent to-surface" />
-        <div className="absolute inset-0 bg-gradient-to-r from-surface/60 via-transparent to-surface/60" />
+      </div>
+      <div className="absolute inset-0 top-1/2 h-1/2 overflow-hidden">
+        <img
+          src="/assets/stills/manifesto-figure-2000.webp"
+          loading="lazy"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover opacity-[0.07]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-surface via-transparent to-surface" />
       </div>
 
       {/* Restrained gold radial glow */}

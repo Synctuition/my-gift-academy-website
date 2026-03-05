@@ -7,6 +7,7 @@ import { WhoItsFor } from './sections/WhoItsFor'
 import { Journey } from './sections/Journey'
 import { Testimonials } from './sections/Testimonials'
 import { FAQ } from './sections/FAQ'
+import { PromoVideo } from './sections/PromoVideo'
 import { FinalCTA } from './sections/FinalCTA'
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <Navbar />
       <main id="main-content" tabIndex={-1}>
         <Hero />
+        <PromoVideo />
         <Manifesto />
         <About />
         <WhoItsFor />
