@@ -85,27 +85,29 @@ function ManifestoBeatBlock({ beat, index }: { beat: ManifestoBeat; index: numbe
   )
 }
 
-/* ─── Scroll-scrub video hook ─── */
+/* ─── Scroll-scrub video hook (supports multiple video elements) ─── */
 function useScrollScrubVideo() {
-  const videoRef = useRef<HTMLVideoElement>(null)
+  const videosRef = useRef<HTMLVideoElement[]>([])
   const sectionRef = useRef<HTMLElement>(null)
   const rafId = useRef(0)
   const isActive = useRef(false)
 
+  const addVideoRef = useCallback((el: HTMLVideoElement | null) => {
+    if (el && !videosRef.current.includes(el)) videosRef.current.push(el)
+  }, [])
+
   const scrub = useCallback(() => {
-    const video = videoRef.current
     const section = sectionRef.current
-    if (!video || !section || !isActive.current) return
+    if (!section || !isActive.current) return
 
     const rect = section.getBoundingClientRect()
     const viewH = window.innerHeight
-    // progress: 0 when section top enters viewport bottom, 1 when section bottom leaves viewport top
     const totalTravel = rect.height + viewH
     const traveled = viewH - rect.top
     const progress = Math.max(0, Math.min(1, traveled / totalTravel))
 
-    if (video.duration) {
-      video.currentTime = progress * video.duration
+    for (const video of videosRef.current) {
+      if (video.duration) video.currentTime = progress * video.duration
     }
 
     rafId.current = requestAnimationFrame(scrub)
@@ -135,13 +137,13 @@ function useScrollScrubVideo() {
     }
   }, [scrub])
 
-  return { videoRef, sectionRef }
+  return { addVideoRef, sectionRef }
 }
 
 /* ─── Section ─── */
 export function Manifesto() {
   const { ref: dividerRef, isVisible: dividerVisible } = useScrollReveal()
-  const { videoRef, sectionRef } = useScrollScrubVideo()
+  const { addVideoRef, sectionRef } = useScrollScrubVideo()
 
   return (
     <section
@@ -152,19 +154,31 @@ export function Manifesto() {
       {/* Background: deep dark gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-surface via-base-900 to-surface" />
 
-      {/* Scroll-scrub video background */}
+      {/* Scroll-scrub video background — 2 layers */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Back layer: blurred cover fill for edges */}
         <video
-          ref={videoRef}
+          ref={addVideoRef}
           src="/assets/video/manifesto-scrub.mp4"
           muted
           playsInline
           preload="metadata"
           aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover opacity-[0.28] blur-[0.5px] saturate-[1.1] contrast-[1.05] mix-blend-screen"
+          className="absolute inset-0 w-full h-full object-cover opacity-[0.10] blur-[12px] saturate-50"
         />
-        {/* Edge gradients only — let the video breathe */}
+        {/* Front layer: contained, readable footage */}
+        <video
+          ref={addVideoRef}
+          src="/assets/video/manifesto-scrub.mp4"
+          muted
+          playsInline
+          preload="metadata"
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-auto max-h-full object-contain mx-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.25] saturate-[1.1] contrast-[1.05] mix-blend-screen"
+        />
+        {/* Edge gradients for text legibility */}
         <div className="absolute inset-0 bg-gradient-to-b from-surface via-transparent to-surface" />
+        <div className="absolute inset-0 bg-gradient-to-r from-surface/60 via-transparent to-surface/60" />
       </div>
 
       {/* Restrained gold radial glow */}
