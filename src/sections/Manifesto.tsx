@@ -161,11 +161,10 @@ export function Manifesto() {
           playsInline
           preload="metadata"
           aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover opacity-[0.15] blur-[1px] saturate-[0.6]"
+          className="absolute inset-0 w-full h-full object-cover opacity-[0.28] blur-[0.5px] saturate-[1.1] contrast-[1.05] mix-blend-screen"
         />
-        {/* Strong gradient overlays for text legibility */}
-        <div className="absolute inset-0 bg-gradient-to-b from-surface via-base-950/60 to-surface" />
-        <div className="absolute inset-0 bg-base-950/30" />
+        {/* Edge gradients only — let the video breathe */}
+        <div className="absolute inset-0 bg-gradient-to-b from-surface via-transparent to-surface" />
       </div>
 
       {/* Restrained gold radial glow */}
