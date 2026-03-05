@@ -1,3 +1,4 @@
+import { useRef, useEffect, useCallback } from 'react'
 import { manifestoBeats, type ManifestoBeat, type BeatVariant } from '../data/content'
 import { Container } from '../components/ui/Container'
 import { GoldDivider } from '../components/ui/GoldDivider'
@@ -9,27 +10,27 @@ const variantConfig: Record<
   { wrapperClass: string; textClass: string; threshold: number }
 > = {
   declaration: {
-    wrapperClass: 'min-h-[60vh] md:min-h-[70vh] flex items-center justify-center',
+    wrapperClass: 'min-h-[50vh] md:min-h-[60vh] flex items-center justify-center',
     textClass:
-      'font-[family-name:var(--font-serif)] text-[length:var(--font-size-h1)] leading-[1.15] text-shimmer font-normal whitespace-pre-line',
+      'font-[family-name:var(--font-serif)] text-[length:var(--font-size-h1)] leading-[1.15] text-shimmer font-normal whitespace-pre-line drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)]',
     threshold: 0.25,
   },
   emphasis: {
-    wrapperClass: 'py-16 md:py-24',
+    wrapperClass: 'py-8 md:py-12',
     textClass:
-      'font-[family-name:var(--font-serif)] text-[length:var(--font-size-h2)] leading-[1.3] text-text-primary',
+      'font-[family-name:var(--font-serif)] text-[length:var(--font-size-h2)] leading-[1.3] text-text-primary drop-shadow-[0_1px_8px_rgba(0,0,0,0.6)]',
     threshold: 0.3,
   },
   statement: {
-    wrapperClass: 'py-10 md:py-14',
+    wrapperClass: 'py-5 md:py-8',
     textClass:
-      'text-[length:var(--font-size-body-lg)] md:text-xl leading-[1.7] text-text-secondary',
+      'text-[length:var(--font-size-body-lg)] md:text-xl leading-[1.7] text-text-secondary drop-shadow-[0_1px_6px_rgba(0,0,0,0.5)]',
     threshold: 0.3,
   },
   whisper: {
-    wrapperClass: 'py-12 md:py-20',
+    wrapperClass: 'py-8 md:py-12',
     textClass:
-      'text-base md:text-lg italic text-text-muted tracking-wide',
+      'text-base md:text-lg italic text-text-muted tracking-wide drop-shadow-[0_1px_6px_rgba(0,0,0,0.5)]',
     threshold: 0.4,
   },
 }
@@ -52,15 +53,15 @@ function TimelineDot() {
         isVisible ? 'opacity-100' : 'opacity-0'
       }`}
     >
-      <div className="w-px h-8 md:h-12 bg-gradient-to-b from-transparent to-accent/30" />
+      <div className="w-px h-5 md:h-8 bg-gradient-to-b from-transparent to-accent/30" />
       <div className="h-1 w-1 rounded-full bg-accent/50" />
-      <div className="w-px h-8 md:h-12 bg-gradient-to-b from-accent/30 to-transparent" />
+      <div className="w-px h-5 md:h-8 bg-gradient-to-b from-accent/30 to-transparent" />
     </div>
   )
 }
 
 /* ─── Single beat ─── */
-function ManifestoBeat({ beat, index }: { beat: ManifestoBeat; index: number }) {
+function ManifestoBeatBlock({ beat, index }: { beat: ManifestoBeat; index: number }) {
   const config = variantConfig[beat.variant]
   const fade = fadeDirections[index % fadeDirections.length]
   const { ref, isVisible } = useScrollReveal({ threshold: config.threshold })
@@ -84,38 +85,87 @@ function ManifestoBeat({ beat, index }: { beat: ManifestoBeat; index: number }) 
   )
 }
 
+/* ─── Scroll-scrub video hook ─── */
+function useScrollScrubVideo() {
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const sectionRef = useRef<HTMLElement>(null)
+  const rafId = useRef(0)
+  const isActive = useRef(false)
+
+  const scrub = useCallback(() => {
+    const video = videoRef.current
+    const section = sectionRef.current
+    if (!video || !section || !isActive.current) return
+
+    const rect = section.getBoundingClientRect()
+    const viewH = window.innerHeight
+    // progress: 0 when section top enters viewport bottom, 1 when section bottom leaves viewport top
+    const totalTravel = rect.height + viewH
+    const traveled = viewH - rect.top
+    const progress = Math.max(0, Math.min(1, traveled / totalTravel))
+
+    if (video.duration) {
+      video.currentTime = progress * video.duration
+    }
+
+    rafId.current = requestAnimationFrame(scrub)
+  }, [])
+
+  useEffect(() => {
+    const section = sectionRef.current
+    if (!section) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          isActive.current = true
+          rafId.current = requestAnimationFrame(scrub)
+        } else {
+          isActive.current = false
+          cancelAnimationFrame(rafId.current)
+        }
+      },
+      { threshold: 0 },
+    )
+
+    observer.observe(section)
+    return () => {
+      observer.disconnect()
+      cancelAnimationFrame(rafId.current)
+    }
+  }, [scrub])
+
+  return { videoRef, sectionRef }
+}
+
 /* ─── Section ─── */
 export function Manifesto() {
   const { ref: dividerRef, isVisible: dividerVisible } = useScrollReveal()
+  const { videoRef, sectionRef } = useScrollScrubVideo()
 
   return (
     <section
+      ref={sectionRef}
       id="manifesto"
-      className="relative py-20 md:py-28 overflow-hidden"
+      className="relative py-16 md:py-24 overflow-hidden"
     >
       {/* Background: deep dark gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-surface via-base-900 to-surface" />
 
-      {/* Subtle photographic backgrounds — restrained opacity */}
-      <div className="absolute inset-0 top-0 h-1/2 overflow-hidden">
-        <img
-          src="/assets/stills/manifesto-clock-2000.webp"
-          loading="lazy"
-          alt=""
+      {/* Scroll-scrub video background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <video
+          ref={videoRef}
+          src="/assets/video/manifesto-scrub.mp4"
+          muted
+          playsInline
+          preload="metadata"
           aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover opacity-[0.06]"
+          className="absolute inset-0 w-full h-full object-cover opacity-[0.15] blur-[1px] saturate-[0.6]"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-surface via-transparent to-surface" />
-      </div>
-      <div className="absolute inset-0 top-1/2 h-1/2 overflow-hidden">
-        <img
-          src="/assets/stills/manifesto-figure-2000.webp"
-          loading="lazy"
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover opacity-[0.07]"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-surface via-transparent to-surface" />
+        {/* Strong gradient overlays for text legibility */}
+        <div className="absolute inset-0 bg-gradient-to-b from-surface via-base-950/60 to-surface" />
+        <div className="absolute inset-0 bg-base-950/30" />
       </div>
 
       {/* Restrained gold radial glow */}
@@ -124,7 +174,7 @@ export function Manifesto() {
 
       <Container narrow className="relative z-10">
         {/* Eyebrow */}
-        <div className="text-center mb-8 md:mb-12">
+        <div className="text-center mb-6 md:mb-10">
           <p className="text-accent font-[family-name:var(--font-display)] text-xs font-semibold uppercase tracking-[0.3em]">
             The Manifesto
           </p>
@@ -134,7 +184,7 @@ export function Manifesto() {
         <div className="flex flex-col items-center">
           {manifestoBeats.map((beat, i) => (
             <div key={i} className="w-full">
-              <ManifestoBeat beat={beat} index={i} />
+              <ManifestoBeatBlock beat={beat} index={i} />
               {i < manifestoBeats.length - 1 && <TimelineDot />}
             </div>
           ))}
@@ -143,7 +193,7 @@ export function Manifesto() {
         {/* Closing divider */}
         <div
           ref={dividerRef}
-          className={`mt-16 md:mt-24 transition-[opacity,transform] duration-1000 ease-out-expo ${
+          className={`mt-12 md:mt-20 transition-[opacity,transform] duration-1000 ease-out-expo ${
             dividerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
         >
