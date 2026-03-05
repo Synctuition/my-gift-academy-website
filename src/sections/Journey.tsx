@@ -39,15 +39,8 @@ export function Journey() {
 
   return (
     <section id="journey" className="relative py-24 md:py-32 overflow-hidden">
-      {/* Background image with warm overlay */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage:
-            'url(https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80&auto=format)',
-        }}
-      />
-      <div className="absolute inset-0 bg-warm-100/93" />
+      {/* Background: warm gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-warm-100 via-warm-50 to-warm-100" />
 
       <Container className="relative z-10">
         <SectionHeading

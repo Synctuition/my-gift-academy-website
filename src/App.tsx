@@ -1,10 +1,9 @@
 import { Navbar } from './components/layout/Navbar'
 import { Footer } from './components/layout/Footer'
 import { Hero } from './sections/Hero'
-import { SocialProof } from './sections/SocialProof'
-import { Mission } from './sections/Mission'
-import { Mirror } from './sections/Mirror'
+import { Manifesto } from './sections/Manifesto'
 import { About } from './sections/About'
+import { WhoItsFor } from './sections/WhoItsFor'
 import { Journey } from './sections/Journey'
 import { Testimonials } from './sections/Testimonials'
 import { FAQ } from './sections/FAQ'
@@ -16,10 +15,9 @@ function App() {
       <Navbar />
       <main id="main-content" tabIndex={-1}>
         <Hero />
-        <SocialProof />
-        <Mission />
-        <Mirror />
+        <Manifesto />
         <About />
+        <WhoItsFor />
         <Journey />
         <Testimonials />
         <FAQ />

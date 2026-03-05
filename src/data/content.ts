@@ -3,29 +3,67 @@ export const heroContent = {
   emphasis: 'The danger is that humans become automatic.',
   subheadline:
     'My Gift Academy exists to defend and awaken the sovereign human mind — so that no generation forgets how to think, feel, create, and become who they were meant to be.',
-  cta: 'Know Yourself First',
-  ctaHref: '#about',
+  cta: 'Begin the Journey',
+  ctaHref: '#manifesto',
 }
 
-export const missionContent = {
-  eyebrow: 'Our Mission',
-  title: 'Defending the Sovereign Human Mind',
-  paragraphs: [
-    'For the first time in history, humanity has created something that can think faster than we do, respond instantly, and appear wiser than any single individual. It is not evil. It is not the enemy. It is one of the greatest achievements of human ingenuity.',
-    'But when intelligence becomes externalized, when answers become immediate, when guidance is always available at the speed of a prompt — something subtle begins to weaken inside the human being. The muscle of reflection. The discipline of doubt. The courage of original thought.',
-    'A civilization that stops thinking deeply does not collapse in noise — it fades in convenience. We are not anti-technology. We are pro-consciousness. We are not fighting machines. We are reminding humans who they are.',
-  ],
-  motto: 'Temet Nosce — Know Yourself',
+export type BeatVariant = 'statement' | 'emphasis' | 'whisper' | 'declaration'
+
+export interface ManifestoBeat {
+  text: string
+  variant: BeatVariant
 }
 
-export const mirrorContent = {
-  lines: [
-    'You already sense it.',
-    'The noise getting louder. The attention getting shorter. The answers coming before you even finish the question.',
-    'And somewhere beneath it all — a quiet knowing that you carry something the world hasn\'t seen yet. Something no algorithm can predict or generate.',
-    'That is your gift. And it is waiting.',
-  ],
-}
+export const manifestoBeats: ManifestoBeat[] = [
+  {
+    text: 'For the first time in history, humanity has created something that can think faster than we do.',
+    variant: 'statement',
+  },
+  {
+    text: 'It is not evil. It is not the enemy. It is one of the greatest achievements of human ingenuity.',
+    variant: 'statement',
+  },
+  {
+    text: 'But when intelligence becomes externalized — something subtle begins to weaken inside the human being.',
+    variant: 'emphasis',
+  },
+  {
+    text: 'The muscle of reflection.\nThe discipline of doubt.\nThe courage of original thought.',
+    variant: 'declaration',
+  },
+  {
+    text: 'You already sense it.',
+    variant: 'whisper',
+  },
+  {
+    text: 'The noise getting louder. The attention getting shorter. The answers arriving before you even finish the question.',
+    variant: 'statement',
+  },
+  {
+    text: 'And somewhere beneath it all — a quiet knowing that you carry something the world hasn\'t seen yet.',
+    variant: 'emphasis',
+  },
+  {
+    text: 'Something no algorithm can predict or generate.',
+    variant: 'declaration',
+  },
+  {
+    text: 'That is your gift.\nAnd it is waiting.',
+    variant: 'declaration',
+  },
+  {
+    text: 'We are not anti-technology. We are pro-consciousness.',
+    variant: 'statement',
+  },
+  {
+    text: 'We are not fighting machines.\nWe are reminding humans who they are.',
+    variant: 'emphasis',
+  },
+  {
+    text: 'Temet Nosce — Know Yourself.',
+    variant: 'declaration',
+  },
+]
 
 export const aboutContent = {
   eyebrow: 'The Academy',
@@ -60,11 +98,40 @@ export const aboutContent = {
   ],
 }
 
-export const journeyContent = {
-  eyebrow: 'The Path',
-  title: 'Your Transformation',
+export const whoItsForContent = {
+  eyebrow: 'Who It\'s For',
+  title: 'Is This Your Path?',
   subtitle:
-    'Three phases from self-discovery to purposeful action — designed to unfold at your own pace, on your own terms.',
+    'My Gift Academy is not for everyone. It is for those who are ready to stop scrolling and start searching — inward.',
+  profiles: [
+    {
+      title: 'Leaders & Founders',
+      description:
+        'You build, you decide, you carry others. But who carries you? This is the space where you stop performing leadership and start embodying it.',
+    },
+    {
+      title: 'Creators & Artists',
+      description:
+        'The world is full of content. You want to make something that matters. Reconnect with the source of original creation that no prompt can reach.',
+    },
+    {
+      title: 'Seekers & Lifelong Learners',
+      description:
+        'You\'ve read the books, done the courses, collected the certificates. Now you\'re ready for the one thing they never taught — how to know yourself.',
+    },
+    {
+      title: 'Professionals in Transition',
+      description:
+        'Between who you were and who you are becoming, there is a threshold. We help you cross it with clarity, not confusion.',
+    },
+  ],
+}
+
+export const journeyContent = {
+  eyebrow: 'How It Works',
+  title: 'The Three Thresholds',
+  subtitle:
+    'A structured path from self-discovery to purposeful action — designed to unfold at your own pace, on your own terms.',
   steps: [
     {
       number: '01',

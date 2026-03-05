@@ -8,20 +8,20 @@ export function Hero() {
       id="hero"
       className="relative min-h-screen flex items-center overflow-hidden grain-overlay"
     >
-      {/* Background image — cinematic, visible */}
+      {/* Background: cinematic gradient — no external stock photo */}
+      <div className="absolute inset-0 bg-gradient-to-br from-base-950 via-base-900 to-base-950" />
+
+      {/* Optional hero still — drop a file at /assets/hero/hero.jpg to activate
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105"
-        style={{
-          backgroundImage:
-            'url(https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?w=1920&q=80&auto=format)',
-        }}
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: 'url(/assets/hero/hero.jpg)' }}
       />
-      {/* Gradient overlays — let the image breathe */}
       <div className="absolute inset-0 bg-gradient-to-r from-base-950/90 via-base-950/70 to-base-950/40" />
       <div className="absolute inset-0 bg-gradient-to-t from-base-950 via-transparent to-base-950/30" />
+      */}
 
       {/* Golden Boy motif — ethereal, right side */}
-      <div className="absolute right-[-5%] md:right-[5%] top-1/2 -translate-y-1/2 w-[300px] md:w-[420px] lg:w-[500px] opacity-[0.07] pointer-events-none select-none">
+      <div className="absolute right-[-5%] md:right-[5%] top-1/2 -translate-y-1/2 w-[300px] md:w-[420px] lg:w-[500px] opacity-[0.08] pointer-events-none select-none">
         <img
           src="/assets/golden-boy/golden_boy.png"
           alt=""
@@ -30,7 +30,7 @@ export function Hero() {
         />
       </div>
 
-      {/* Animated ambient orbs */}
+      {/* Ambient gold orbs */}
       <div className="absolute top-1/4 right-1/3 w-80 h-80 rounded-full bg-gold-500/8 blur-[100px] animate-pulse-glow" />
       <div className="absolute bottom-1/4 right-1/4 w-64 h-64 rounded-full bg-gold-300/6 blur-[80px] animate-float-slow" />
 
@@ -61,7 +61,7 @@ export function Hero() {
             <Button size="large" href={heroContent.ctaHref}>
               {heroContent.cta}
             </Button>
-            <Button size="large" variant="ghost" href="#mission">
+            <Button size="large" variant="ghost" href="#manifesto">
               Read the Manifesto
             </Button>
           </div>

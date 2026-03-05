@@ -37,17 +37,10 @@ function TestimonialCard({ t, index }: { t: (typeof testimonials)[number]; index
 export function Testimonials() {
   return (
     <section id="testimonials" className="relative py-24 md:py-32 overflow-hidden grain-overlay">
-      {/* Background — different from other dark sections */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage:
-            'url(https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1920&q=80&auto=format)',
-        }}
-      />
-      <div className="absolute inset-0 bg-base-950/93" />
+      {/* Background: dark gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-base-950 via-base-900 to-base-950" />
 
-      {/* Ambient effects */}
+      {/* Ambient effect */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-gold-500/[0.03] blur-[120px]" />
 
       <Container className="relative z-10">

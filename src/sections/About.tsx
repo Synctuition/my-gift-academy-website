@@ -62,17 +62,8 @@ function PillarCard({ pillar, index }: { pillar: (typeof aboutContent.pillars)[n
 export function About() {
   return (
     <section id="about" className="relative py-24 md:py-32 overflow-hidden">
-      {/* Split background — image + dark overlay */}
-      <div className="absolute inset-0">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage:
-              'url(https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1920&q=80&auto=format)',
-          }}
-        />
-        <div className="absolute inset-0 bg-base-950/94" />
-      </div>
+      {/* Background: dark gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-base-950 via-base-900 to-base-950" />
 
       {/* Golden Boy watermark — top right */}
       <div className="absolute right-[-5%] md:right-[2%] top-[5%] w-[200px] md:w-[280px] opacity-[0.03] pointer-events-none select-none rotate-[-15deg]">
@@ -81,7 +72,6 @@ export function About() {
 
       {/* Ambient glow */}
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-gold-500/[0.03] blur-[100px]" />
-      <div className="absolute bottom-0 right-0 w-[300px] h-[300px] rounded-full bg-gold-500/[0.02] blur-[80px]" />
 
       <Container className="relative z-10">
         <SectionHeading

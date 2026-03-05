@@ -10,22 +10,15 @@ export function FinalCTA() {
       id="final-cta"
       className="relative py-32 md:py-44 overflow-hidden grain-overlay"
     >
-      {/* Background image — sunrise, hope */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage:
-            'url(https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=1920&q=80&auto=format)',
-        }}
-      />
-      <div className="absolute inset-0 bg-base-950/80" />
+      {/* Background: dark gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-base-950 via-base-900 to-base-950" />
 
       {/* Golden Boy watermark — centered, behind content */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] md:w-[450px] opacity-[0.05] pointer-events-none select-none">
         <img src="/assets/golden-boy/golden_boy.png" alt="" aria-hidden="true" className="w-full h-auto animate-float-slow" />
       </div>
 
-      {/* Multiple animated gold glows */}
+      {/* Animated gold glows */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-gold-500/12 blur-[120px] animate-pulse-glow" />
       <div className="absolute top-1/3 left-1/3 w-[300px] h-[300px] rounded-full bg-gold-300/8 blur-[80px] animate-float-slow" />
 
