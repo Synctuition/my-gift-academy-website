@@ -44,6 +44,17 @@ export function WhoItsFor() {
           variant="light"
         />
 
+        {/* Overwhelm foreground panel */}
+        <div className="relative w-full max-w-3xl mx-auto mb-14 rounded-2xl overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.10)]">
+          <img
+            src="/assets/stills/problem-overwhelm-1600.webp"
+            alt="The weight of information overload"
+            loading="lazy"
+            className="w-full h-auto block"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-warm-100/70 via-transparent to-transparent" />
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {whoItsForContent.profiles.map((profile, i) => (
             <ProfileCard key={profile.title} profile={profile} index={i} />

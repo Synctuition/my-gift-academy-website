@@ -96,6 +96,28 @@ export function Manifesto() {
       {/* Background: deep dark gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-surface via-base-900 to-surface" />
 
+      {/* Subtle photographic backgrounds — restrained opacity */}
+      <div className="absolute inset-0 top-0 h-1/2 overflow-hidden">
+        <img
+          src="/assets/stills/manifesto-clock-2000.webp"
+          loading="lazy"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover opacity-[0.06]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-surface via-transparent to-surface" />
+      </div>
+      <div className="absolute inset-0 top-1/2 h-1/2 overflow-hidden">
+        <img
+          src="/assets/stills/manifesto-figure-2000.webp"
+          loading="lazy"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover opacity-[0.07]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-surface via-transparent to-surface" />
+      </div>
+
       {/* Restrained gold radial glow */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full bg-gold-500/[0.02] blur-[200px]" />
       <div className="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-gold-500/[0.015] blur-[160px]" />

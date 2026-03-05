@@ -40,6 +40,18 @@ export function Testimonials() {
       {/* Background: dark gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-base-950 via-base-900 to-base-950" />
 
+      {/* Subtle photographic background */}
+      <div className="absolute inset-0 overflow-hidden">
+        <img
+          src="/assets/stills/intimate-closeup-1200.webp"
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          className="absolute inset-0 w-full h-full object-cover opacity-[0.05]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-base-950 via-transparent to-base-950" />
+      </div>
+
       {/* Ambient effect */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-gold-500/[0.03] blur-[120px]" />
 

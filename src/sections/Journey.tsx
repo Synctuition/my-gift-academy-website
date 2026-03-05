@@ -50,6 +50,17 @@ export function Journey() {
           variant="light"
         />
 
+        {/* Desert foreground panel */}
+        <div className="relative w-full max-w-4xl mx-auto mb-16 rounded-2xl overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.12)]">
+          <img
+            src="/assets/stills/journey-desert-1600.webp"
+            alt="A vast desert landscape symbolising the inner journey"
+            loading="lazy"
+            className="w-full h-auto block"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-warm-100/80 via-transparent to-transparent" />
+        </div>
+
         <div className="relative max-w-3xl mx-auto">
           {/* Animated vertical gold line (desktop) */}
           <div

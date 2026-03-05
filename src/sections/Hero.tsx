@@ -8,17 +8,22 @@ export function Hero() {
       id="hero"
       className="relative min-h-screen flex items-center overflow-hidden grain-overlay"
     >
-      {/* Background: cinematic gradient — no external stock photo */}
-      <div className="absolute inset-0 bg-gradient-to-br from-base-950 via-base-900 to-base-950" />
-
-      {/* Optional hero still — drop a file at /assets/hero/hero.jpg to activate
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: 'url(/assets/hero/hero.jpg)' }}
-      />
+      {/* Background: corridor still with dark gradient overlay */}
+      <picture className="absolute inset-0">
+        <source
+          srcSet="/assets/stills/hero-corridor-1200.webp 1200w, /assets/stills/hero-corridor-2400.webp 2400w"
+          sizes="100vw"
+          type="image/webp"
+        />
+        <img
+          src="/assets/stills/hero-corridor-2400.webp"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      </picture>
       <div className="absolute inset-0 bg-gradient-to-r from-base-950/90 via-base-950/70 to-base-950/40" />
       <div className="absolute inset-0 bg-gradient-to-t from-base-950 via-transparent to-base-950/30" />
-      */}
 
       {/* Golden Boy motif — ethereal, right side */}
       <div className="absolute right-[-5%] md:right-[5%] top-1/2 -translate-y-1/2 w-[300px] md:w-[420px] lg:w-[500px] opacity-[0.08] pointer-events-none select-none">
