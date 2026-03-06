@@ -1,4 +1,4 @@
-import { manifestoBeats, type ManifestoBeat, type BeatVariant } from '../data/content'
+import { missionBeats, type ManifestoBeat, type BeatVariant } from '../data/content'
 import { Container } from '../components/ui/Container'
 import { GoldDivider } from '../components/ui/GoldDivider'
 import { useScrollReveal } from '../hooks/useScrollReveal'
@@ -23,13 +23,13 @@ const variantConfig: Record<
   statement: {
     wrapperClass: 'py-5 md:py-8',
     textClass:
-      'text-[length:var(--font-size-body-lg)] md:text-xl leading-[1.7] text-text-secondary',
+      'text-[length:var(--font-size-body-lg)] md:text-xl leading-[1.7] text-text-secondary whitespace-pre-line',
     threshold: 0.3,
   },
   whisper: {
     wrapperClass: 'py-8 md:py-12',
     textClass:
-      'text-base md:text-lg italic text-text-muted tracking-wide',
+      'text-base md:text-lg italic text-accent tracking-wide',
     threshold: 0.4,
   },
 }
@@ -60,7 +60,7 @@ function TimelineDot() {
 }
 
 /* ─── Single beat ─── */
-function ManifestoBeatBlock({ beat, index }: { beat: ManifestoBeat; index: number }) {
+function MissionBeatBlock({ beat, index }: { beat: ManifestoBeat; index: number }) {
   const config = variantConfig[beat.variant]
   const fade = fadeDirections[index % fadeDirections.length]
   const { ref, isVisible } = useScrollReveal({ threshold: config.threshold })
@@ -85,57 +85,34 @@ function ManifestoBeatBlock({ beat, index }: { beat: ManifestoBeat; index: numbe
 }
 
 /* ─── Section ─── */
-export function Manifesto() {
+export function Mission() {
   const { ref: dividerRef, isVisible: dividerVisible } = useScrollReveal()
 
   return (
     <section
-      id="manifesto"
+      id="mission"
       className="relative py-16 md:py-24 overflow-hidden"
     >
-      {/* Background: deep dark gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-surface via-base-900 to-surface" />
+      {/* Background: warm ivory */}
+      <div className="absolute inset-0 bg-surface" />
 
-      {/* Subtle photographic backgrounds — restrained opacity */}
-      <div className="absolute inset-0 top-0 h-1/2 overflow-hidden">
-        <img
-          src="/assets/stills/manifesto-clock-2000.webp"
-          loading="lazy"
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover opacity-[0.06]"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-surface via-transparent to-surface" />
-      </div>
-      <div className="absolute inset-0 top-1/2 h-1/2 overflow-hidden">
-        <img
-          src="/assets/stills/manifesto-figure-2000.webp"
-          loading="lazy"
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover opacity-[0.07]"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-surface via-transparent to-surface" />
-      </div>
-
-      {/* Restrained gold radial glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full bg-gold-500/[0.02] blur-[200px]" />
-      <div className="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-gold-500/[0.015] blur-[160px]" />
+      {/* Subtle gold radial glow */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full bg-gold-300/[0.06] blur-[200px]" />
 
       <Container narrow className="relative z-10">
         {/* Eyebrow */}
         <div className="text-center mb-6 md:mb-10">
           <p className="text-accent font-[family-name:var(--font-display)] text-xs font-semibold uppercase tracking-[0.3em]">
-            The Manifesto
+            Our Mission
           </p>
         </div>
 
         {/* Beats with timeline dots */}
         <div className="flex flex-col items-center">
-          {manifestoBeats.map((beat, i) => (
+          {missionBeats.map((beat, i) => (
             <div key={i} className="w-full">
-              <ManifestoBeatBlock beat={beat} index={i} />
-              {i < manifestoBeats.length - 1 && <TimelineDot />}
+              <MissionBeatBlock beat={beat} index={i} />
+              {i < missionBeats.length - 1 && <TimelineDot />}
             </div>
           ))}
         </div>

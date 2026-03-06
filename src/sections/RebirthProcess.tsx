@@ -1,9 +1,9 @@
-import { journeyContent } from '../data/content'
+import { rebirthContent } from '../data/content'
 import { Container } from '../components/ui/Container'
 import { SectionHeading } from '../components/ui/SectionHeading'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 
-function JourneyStep({ step, index }: { step: (typeof journeyContent.steps)[number]; index: number }) {
+function RebirthStep({ step, index }: { step: (typeof rebirthContent.steps)[number]; index: number }) {
   const { ref, isVisible } = useScrollReveal()
 
   return (
@@ -20,13 +20,13 @@ function JourneyStep({ step, index }: { step: (typeof journeyContent.steps)[numb
       </span>
 
       {/* Dot on the timeline */}
-      <div className="hidden md:block absolute left-0 top-3 w-3 h-3 rounded-full bg-accent shadow-[0_0_12px_rgba(201,168,76,0.4)]" />
+      <div className="hidden md:block absolute left-0 top-3 w-3 h-3 rounded-full bg-accent shadow-[0_0_12px_rgba(176,143,58,0.4)]" />
 
       <div className="md:ml-0">
-        <h3 className="font-[family-name:var(--font-display)] text-[length:var(--font-size-h3)] font-bold text-text-dark mb-3">
+        <h3 className="font-[family-name:var(--font-display)] text-[length:var(--font-size-h3)] font-bold text-text-primary mb-3">
           {step.title}
         </h3>
-        <p className="text-text-dark-secondary leading-relaxed max-w-lg">
+        <p className="text-text-secondary leading-relaxed max-w-lg">
           {step.description}
         </p>
       </div>
@@ -34,32 +34,20 @@ function JourneyStep({ step, index }: { step: (typeof journeyContent.steps)[numb
   )
 }
 
-export function Journey() {
+export function RebirthProcess() {
   const { ref: timelineRef, isVisible: timelineVisible } = useScrollReveal()
 
   return (
-    <section id="journey" className="relative py-24 md:py-32 overflow-hidden">
-      {/* Background: warm gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-warm-100 via-warm-50 to-warm-100" />
+    <section id="rebirth" className="relative py-24 md:py-32 overflow-hidden">
+      {/* Background: warm accent */}
+      <div className="absolute inset-0 bg-surface-accent" />
 
       <Container className="relative z-10">
         <SectionHeading
-          eyebrow={journeyContent.eyebrow}
-          title={journeyContent.title}
-          subtitle={journeyContent.subtitle}
-          variant="light"
+          eyebrow={rebirthContent.eyebrow}
+          title={rebirthContent.title}
+          subtitle={rebirthContent.subtitle}
         />
-
-        {/* Desert foreground panel */}
-        <div className="relative w-full max-w-4xl mx-auto mb-16 rounded-2xl overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.12)]">
-          <img
-            src="/assets/stills/journey-desert-1600.webp"
-            alt="A vast desert landscape symbolising the inner journey"
-            loading="lazy"
-            className="w-full h-auto block"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-warm-100/80 via-transparent to-transparent" />
-        </div>
 
         <div className="relative max-w-3xl mx-auto">
           {/* Animated vertical gold line (desktop) */}
@@ -71,8 +59,8 @@ export function Journey() {
           />
 
           <div className="space-y-20">
-            {journeyContent.steps.map((step, i) => (
-              <JourneyStep key={step.number} step={step} index={i} />
+            {rebirthContent.steps.map((step, i) => (
+              <RebirthStep key={step.number} step={step} index={i} />
             ))}
           </div>
         </div>
