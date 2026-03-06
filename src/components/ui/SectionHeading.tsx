@@ -5,7 +5,7 @@ interface SectionHeadingProps {
   title: string
   subtitle?: string
   centered?: boolean
-  variant?: 'dark' | 'light'
+  invertColors?: boolean
 }
 
 export function SectionHeading({
@@ -13,11 +13,9 @@ export function SectionHeading({
   title,
   subtitle,
   centered = true,
-  variant = 'dark',
+  invertColors = false,
 }: SectionHeadingProps) {
   const { ref, isVisible } = useScrollReveal()
-
-  const isDark = variant === 'dark'
 
   return (
     <div
@@ -33,7 +31,7 @@ export function SectionHeading({
       )}
       <h2
         className={`font-[family-name:var(--font-display)] font-bold text-[length:var(--font-size-h2)] leading-[1.15] ${
-          isDark ? 'text-text-primary' : 'text-text-dark'
+          invertColors ? 'text-text-light' : 'text-text-primary'
         }`}
       >
         {title}
@@ -42,7 +40,7 @@ export function SectionHeading({
         <p
           className={`mt-5 text-[length:var(--font-size-body-lg)] max-w-2xl leading-relaxed ${
             centered ? 'mx-auto' : ''
-          } ${isDark ? 'text-text-secondary' : 'text-text-dark-secondary'}`}
+          } ${invertColors ? 'text-text-light-secondary' : 'text-text-secondary'}`}
         >
           {subtitle}
         </p>

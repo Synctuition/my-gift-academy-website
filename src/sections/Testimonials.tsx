@@ -16,7 +16,7 @@ function TestimonialCard({ t, index }: { t: (typeof testimonials)[number]; index
     >
       <div className="flex items-center gap-4 mb-6">
         {/* Avatar */}
-        <div className="w-14 h-14 rounded-full bg-gradient-to-br from-gold-500/30 to-gold-700/10 flex items-center justify-center shrink-0 ring-2 ring-gold-500/20">
+        <div className="w-14 h-14 rounded-full bg-gradient-to-br from-gold-200 to-gold-100 flex items-center justify-center shrink-0 ring-2 ring-gold-300/40">
           <span className="text-accent text-lg font-bold">{t.name[0]}</span>
         </div>
         <div>
@@ -36,24 +36,12 @@ function TestimonialCard({ t, index }: { t: (typeof testimonials)[number]; index
 
 export function Testimonials() {
   return (
-    <section id="testimonials" className="relative py-24 md:py-32 overflow-hidden grain-overlay">
-      {/* Background: dark gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-base-950 via-base-900 to-base-950" />
-
-      {/* Subtle photographic background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <img
-          src="/assets/stills/intimate-closeup-1200.webp"
-          alt=""
-          aria-hidden="true"
-          loading="lazy"
-          className="absolute inset-0 w-full h-full object-cover opacity-[0.05]"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-base-950 via-transparent to-base-950" />
-      </div>
+    <section id="testimonials" className="relative py-24 md:py-32 overflow-hidden">
+      {/* Background: warm accent */}
+      <div className="absolute inset-0 bg-surface-accent" />
 
       {/* Ambient effect */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-gold-500/[0.03] blur-[120px]" />
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-gold-300/[0.08] blur-[120px]" />
 
       <Container className="relative z-10">
         <SectionHeading

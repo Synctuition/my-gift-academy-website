@@ -34,7 +34,7 @@ const socials = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-base-800 bg-base-950 grain-overlay">
+    <footer className="border-t border-warm-800/30 bg-warm-900 grain-overlay">
       <Container>
         <div className="py-16 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
           {/* Brand */}
@@ -46,18 +46,18 @@ export function Footer() {
                 className="h-10 w-auto"
                 aria-hidden="true"
               />
-              <p className="font-[family-name:var(--font-display)] text-xl font-bold text-text-primary">
+              <p className="font-[family-name:var(--font-display)] text-xl font-bold text-text-light">
                 My Gift Academy
               </p>
             </div>
-            <p className="text-text-muted text-sm leading-relaxed max-w-xs">
+            <p className="text-text-light-secondary text-sm leading-relaxed max-w-xs">
               Defending the sovereign human mind. Awakening the gift that only you can bring.
             </p>
           </div>
 
           {/* Navigation */}
           <div>
-            <p className="font-[family-name:var(--font-display)] text-sm font-semibold text-text-primary uppercase tracking-wider mb-4">
+            <p className="font-[family-name:var(--font-display)] text-sm font-semibold text-text-light uppercase tracking-wider mb-4">
               Navigate
             </p>
             <ul className="space-y-2">
@@ -65,7 +65,7 @@ export function Footer() {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-text-muted text-sm hover:text-accent transition-colors duration-200"
+                    className="text-text-light-secondary text-sm hover:text-accent transition-colors duration-200"
                   >
                     {link.label}
                   </a>
@@ -76,7 +76,7 @@ export function Footer() {
 
           {/* Social */}
           <div>
-            <p className="font-[family-name:var(--font-display)] text-sm font-semibold text-text-primary uppercase tracking-wider mb-4">
+            <p className="font-[family-name:var(--font-display)] text-sm font-semibold text-text-light uppercase tracking-wider mb-4">
               Connect
             </p>
             <div className="flex gap-4">
@@ -85,7 +85,7 @@ export function Footer() {
                   key={s.name}
                   href={s.href}
                   aria-label={s.name}
-                  className="w-10 h-10 rounded-full border border-base-700 flex items-center justify-center text-text-muted hover:text-accent hover:border-accent/50 transition-colors duration-200"
+                  className="w-10 h-10 rounded-full border border-warm-800/50 flex items-center justify-center text-text-light-secondary hover:text-accent hover:border-accent/50 transition-colors duration-200"
                 >
                   <SocialIcon name={s.name} />
                 </a>
@@ -95,22 +95,22 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-base-800 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="border-t border-warm-800/30 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <img
               src="/assets/golden-boy/golden_boy.png"
               alt="My Gift Academy"
               className="h-6 w-auto opacity-60"
             />
-            <span className="text-text-muted text-xs">
+            <span className="text-text-light-secondary text-xs">
               &copy; {new Date().getFullYear()} My Gift Academy O&Uuml;. All rights reserved.
             </span>
           </div>
           <div className="flex gap-6">
-            <a href="#" className="text-text-muted text-xs hover:text-accent transition-colors duration-200">
+            <a href="#" className="text-text-light-secondary text-xs hover:text-accent transition-colors duration-200">
               Privacy Policy
             </a>
-            <a href="#" className="text-text-muted text-xs hover:text-accent transition-colors duration-200">
+            <a href="#" className="text-text-light-secondary text-xs hover:text-accent transition-colors duration-200">
               Terms of Service
             </a>
           </div>

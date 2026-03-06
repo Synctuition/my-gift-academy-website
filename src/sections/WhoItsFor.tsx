@@ -20,10 +20,10 @@ function ProfileCard({
       }`}
       style={{ transitionDelay: `${index * 120}ms` }}
     >
-      <h3 className="font-[family-name:var(--font-display)] text-[length:var(--font-size-h3)] font-bold text-text-dark mb-3">
+      <h3 className="font-[family-name:var(--font-display)] text-[length:var(--font-size-h3)] font-bold text-text-primary mb-3">
         {profile.title}
       </h3>
-      <p className="text-text-dark-secondary leading-relaxed">
+      <p className="text-text-secondary leading-relaxed">
         {profile.description}
       </p>
     </div>
@@ -41,7 +41,6 @@ export function WhoItsFor() {
           eyebrow={whoItsForContent.eyebrow}
           title={whoItsForContent.title}
           subtitle={whoItsForContent.subtitle}
-          variant="light"
         />
 
         {/* Overwhelm foreground panel */}

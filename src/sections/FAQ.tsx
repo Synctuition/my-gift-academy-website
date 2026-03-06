@@ -26,7 +26,7 @@ function FAQAccordionItem({ item, index }: { item: FAQItem; index: number }) {
           aria-expanded={isOpen}
           aria-controls={panelId}
         >
-          <span className="font-[family-name:var(--font-display)] font-semibold text-text-dark pr-4">
+          <span className="font-[family-name:var(--font-display)] font-semibold text-text-primary pr-4">
             {item.question}
           </span>
           <span
@@ -46,7 +46,7 @@ function FAQAccordionItem({ item, index }: { item: FAQItem; index: number }) {
         hidden={!isOpen}
       >
         <div className="px-6 pb-6">
-          <p className="text-text-dark-secondary leading-relaxed">
+          <p className="text-text-secondary leading-relaxed">
             {item.answer}
           </p>
         </div>
@@ -65,7 +65,6 @@ export function FAQ() {
         <SectionHeading
           eyebrow="FAQ"
           title="Common Questions"
-          variant="light"
         />
 
         <div className="space-y-3">

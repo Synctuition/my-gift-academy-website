@@ -22,22 +22,22 @@ export function Hero() {
           className="absolute inset-0 w-full h-full object-cover"
         />
       </picture>
-      <div className="absolute inset-0 bg-gradient-to-r from-base-950/90 via-base-950/70 to-base-950/40" />
-      <div className="absolute inset-0 bg-gradient-to-t from-base-950 via-transparent to-base-950/30" />
+      <div className="absolute inset-0 bg-gradient-to-r from-warm-50/90 via-warm-50/70 to-warm-50/40" />
+      <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-warm-50/30" />
 
       {/* Golden Boy motif — ethereal, right side */}
-      <div className="absolute right-[-5%] md:right-[5%] top-1/2 -translate-y-1/2 w-[300px] md:w-[420px] lg:w-[500px] opacity-[0.08] pointer-events-none select-none">
+      <div className="absolute right-[-5%] md:right-[5%] top-1/2 -translate-y-1/2 w-[300px] md:w-[420px] lg:w-[500px] opacity-[0.06] pointer-events-none select-none">
         <img
           src="/assets/golden-boy/golden_boy.png"
           alt=""
           aria-hidden="true"
-          className="w-full h-auto animate-float-slow [filter:brightness(1.5)_sepia(1)_hue-rotate(-10deg)_saturate(2)]"
+          className="w-full h-auto animate-float-slow [filter:sepia(1)_hue-rotate(-10deg)_saturate(1.5)]"
         />
       </div>
 
       {/* Ambient gold orbs */}
-      <div className="absolute top-1/4 right-1/3 w-80 h-80 rounded-full bg-gold-500/8 blur-[100px] animate-pulse-glow" />
-      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 rounded-full bg-gold-300/6 blur-[80px] animate-float-slow" />
+      <div className="absolute top-1/4 right-1/3 w-80 h-80 rounded-full bg-gold-400/10 blur-[100px] animate-pulse-glow" />
+      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 rounded-full bg-gold-300/8 blur-[80px] animate-float-slow" />
 
       <Container className="relative z-10 pt-28 pb-20">
         <div className="max-w-3xl">
@@ -66,15 +66,15 @@ export function Hero() {
             <Button size="large" href={heroContent.ctaHref}>
               {heroContent.cta}
             </Button>
-            <Button size="large" variant="ghost" href="#manifesto">
-              Read the Manifesto
+            <Button size="large" variant="ghost" href="#about">
+              Learn More
             </Button>
           </div>
         </div>
       </Container>
 
       {/* Bottom gradient fade into next section */}
-      <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-surface to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-surface to-transparent" />
     </section>
   )
 }

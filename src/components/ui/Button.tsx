@@ -25,9 +25,9 @@ const base =
 
 const variants: Record<ButtonVariant, string> = {
   primary:
-    'bg-accent text-base-950 transition-[background-color,box-shadow,transform] duration-300 ease-out-expo hover:bg-accent-hover hover:shadow-gold-glow active:scale-[0.97]',
+    'bg-accent text-white transition-[background-color,box-shadow,transform] duration-300 ease-out-expo hover:bg-accent-hover hover:shadow-gold-glow active:scale-[0.97]',
   ghost:
-    'border-2 border-base-500 text-text-secondary transition-[border-color,color,transform] duration-300 ease-out-expo hover:border-accent hover:text-accent active:scale-[0.97]',
+    'border-2 border-border text-text-secondary transition-[border-color,color,transform] duration-300 ease-out-expo hover:border-accent hover:text-accent active:scale-[0.97]',
 }
 
 const sizes: Record<ButtonSize, string> = {

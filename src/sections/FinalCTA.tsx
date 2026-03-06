@@ -10,17 +10,17 @@ export function FinalCTA() {
       id="final-cta"
       className="relative py-32 md:py-44 overflow-hidden grain-overlay"
     >
-      {/* Background: dark gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-base-950 via-base-900 to-base-950" />
+      {/* Background: warm dark for contrast punch */}
+      <div className="absolute inset-0 bg-gradient-to-b from-warm-900 via-warm-800 to-warm-900" />
 
       {/* Golden Boy watermark — centered, behind content */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] md:w-[450px] opacity-[0.05] pointer-events-none select-none">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] md:w-[450px] opacity-[0.06] pointer-events-none select-none">
         <img src="/assets/golden-boy/golden_boy.png" alt="" aria-hidden="true" className="w-full h-auto animate-float-slow" />
       </div>
 
       {/* Animated gold glows */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-gold-500/12 blur-[120px] animate-pulse-glow" />
-      <div className="absolute top-1/3 left-1/3 w-[300px] h-[300px] rounded-full bg-gold-300/8 blur-[80px] animate-float-slow" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-gold-400/15 blur-[120px] animate-pulse-glow" />
+      <div className="absolute top-1/3 left-1/3 w-[300px] h-[300px] rounded-full bg-gold-300/10 blur-[80px] animate-float-slow" />
 
       <Container className="relative z-10">
         <div
@@ -32,22 +32,22 @@ export function FinalCTA() {
           <p className="text-accent font-[family-name:var(--font-display)] text-sm font-semibold uppercase tracking-[0.25em] mb-6">
             The time is now
           </p>
-          <h2 className="font-[family-name:var(--font-serif)] font-normal text-[length:var(--font-size-h1)] leading-[1.1] text-text-primary mb-6">
+          <h2 className="font-[family-name:var(--font-serif)] font-normal text-[length:var(--font-size-h1)] leading-[1.1] text-text-light mb-6">
             Your Gift Is Waiting
           </h2>
-          <p className="text-text-secondary text-[length:var(--font-size-body-lg)] max-w-xl mx-auto mb-12 leading-relaxed">
+          <p className="text-text-light-secondary text-[length:var(--font-size-body-lg)] max-w-xl mx-auto mb-12 leading-relaxed">
             The world does not need more automation. It needs individuality. It needs courage.
             It needs the light that only you can bring.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Button size="large" href="#journey">
-              Choose Yourself
+            <Button size="large" href="#apply">
+              Apply to Join the Academy
             </Button>
             <Button size="large" variant="ghost" href="#faq">
-              Learn More
+              Have Questions?
             </Button>
           </div>
-          <p className="mt-8 text-text-muted text-sm italic">
+          <p className="mt-8 text-text-light-secondary text-sm italic">
             In an age of artificial intelligence, choose awakened individuality.
           </p>
         </div>

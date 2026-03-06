@@ -62,7 +62,7 @@ function PillarCard({ pillar, index }: { pillar: (typeof aboutContent.pillars)[n
           loading="lazy"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-base-900 via-base-900/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/30 to-transparent" />
       </div>
 
       <div className="p-8">
@@ -83,16 +83,16 @@ function PillarCard({ pillar, index }: { pillar: (typeof aboutContent.pillars)[n
 export function About() {
   return (
     <section id="about" className="relative py-24 md:py-32 overflow-hidden">
-      {/* Background: dark gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-base-950 via-base-900 to-base-950" />
+      {/* Background: light gold tint */}
+      <div className="absolute inset-0 bg-surface-accent" />
 
       {/* Golden Boy watermark — top right */}
-      <div className="absolute right-[-5%] md:right-[2%] top-[5%] w-[200px] md:w-[280px] opacity-[0.03] pointer-events-none select-none rotate-[-15deg]">
+      <div className="absolute right-[-5%] md:right-[2%] top-[5%] w-[200px] md:w-[280px] opacity-[0.04] pointer-events-none select-none rotate-[-15deg]">
         <img src="/assets/golden-boy/golden_boy.png" alt="" aria-hidden="true" className="w-full h-auto" />
       </div>
 
       {/* Ambient glow */}
-      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-gold-500/[0.03] blur-[100px]" />
+      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-gold-300/[0.08] blur-[100px]" />
 
       <Container className="relative z-10">
         <SectionHeading

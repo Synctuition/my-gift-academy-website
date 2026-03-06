@@ -47,9 +47,9 @@ export function Navbar() {
       </a>
 
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-[background-color,border-color] duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-[background-color,border-color,box-shadow] duration-500 ${
           isScrolled
-            ? 'bg-surface/92 border-b border-base-800 supports-[backdrop-filter]:backdrop-blur-xl'
+            ? 'bg-white/92 border-b border-border shadow-[0_1px_8px_rgba(0,0,0,0.04)] supports-[backdrop-filter]:backdrop-blur-xl'
             : 'bg-transparent border-b border-transparent'
         }`}
       >
@@ -90,8 +90,8 @@ export function Navbar() {
 
           {/* Desktop CTA */}
           <div className="hidden md:block">
-            <Button size="default" href="#final-cta">
-              Get Started
+            <Button size="default" href="#apply">
+              Apply Now
             </Button>
           </div>
 
@@ -116,7 +116,7 @@ export function Navbar() {
             role="dialog"
             aria-modal="true"
             aria-label="Main navigation"
-            className="md:hidden bg-surface-elevated/95 supports-[backdrop-filter]:backdrop-blur-xl border-t border-base-800"
+            className="md:hidden bg-white/95 supports-[backdrop-filter]:backdrop-blur-xl border-t border-border"
           >
             <ul className="flex flex-col py-4 px-5">
               {navLinks.map((link) => (
@@ -131,8 +131,8 @@ export function Navbar() {
                 </li>
               ))}
               <li className="pt-4">
-                <Button href="#final-cta" className="w-full" onClick={closeMobile}>
-                  Get Started
+                <Button href="#apply" className="w-full" onClick={closeMobile}>
+                  Apply Now
                 </Button>
               </li>
             </ul>
