@@ -94,16 +94,16 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom bar with MindSpa logo */}
+        {/* Bottom bar */}
         <div className="border-t border-base-800 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <img
-              src="/assets/logos/mindspa-logo.png"
-              alt="MindSpa"
+              src="/assets/golden-boy/golden_boy.png"
+              alt="My Gift Academy"
               className="h-6 w-auto opacity-60"
             />
             <span className="text-text-muted text-xs">
-              &copy; {new Date().getFullYear()} MindSpa O&Uuml;. All rights reserved.
+              &copy; {new Date().getFullYear()} My Gift Academy O&Uuml;. All rights reserved.
             </span>
           </div>
           <div className="flex gap-6">
