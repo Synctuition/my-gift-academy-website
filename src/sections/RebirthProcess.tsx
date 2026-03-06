@@ -15,12 +15,12 @@ function RebirthStep({ step, index }: { step: (typeof rebirthContent.steps)[numb
       style={{ transitionDelay: `${index * 200}ms` }}
     >
       {/* Step number — large, positioned on the timeline */}
-      <span className="absolute left-0 md:left-4 top-0 font-[family-name:var(--font-display)] text-5xl md:text-6xl font-extrabold text-accent/20">
+      <span className="absolute left-0 md:left-4 top-0 font-[family-name:var(--font-display)] text-5xl md:text-6xl font-extrabold text-accent/15">
         {step.number}
       </span>
 
       {/* Dot on the timeline */}
-      <div className="hidden md:block absolute left-0 top-3 w-3 h-3 rounded-full bg-accent shadow-[0_0_12px_rgba(176,143,58,0.4)]" />
+      <div className="hidden md:block absolute left-0 top-3 w-3 h-3 rounded-full bg-gradient-to-br from-gold-500 to-gold-700 shadow-[0_0_12px_rgba(176,143,58,0.4)] ring-2 ring-gold-100" />
 
       <div className="md:ml-0">
         <h3 className="font-[family-name:var(--font-display)] text-[length:var(--font-size-h3)] font-bold text-text-primary mb-3">
@@ -38,9 +38,15 @@ export function RebirthProcess() {
   const { ref: timelineRef, isVisible: timelineVisible } = useScrollReveal()
 
   return (
-    <section id="rebirth" className="relative py-24 md:py-32 overflow-hidden">
+    <section id="rebirth" className="relative py-24 md:py-32 overflow-hidden grain-overlay">
       {/* Background: warm accent */}
       <div className="absolute inset-0 bg-surface-accent" />
+
+      {/* Gold hairline at top */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/20 to-transparent" />
+
+      {/* Ambient glow */}
+      <div className="absolute top-1/3 right-0 w-[500px] h-[500px] rounded-full bg-gold-200/10 blur-[150px]" />
 
       <Container className="relative z-10">
         <SectionHeading
@@ -65,6 +71,9 @@ export function RebirthProcess() {
           </div>
         </div>
       </Container>
+
+      {/* Gold hairline at bottom */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/20 to-transparent" />
     </section>
   )
 }

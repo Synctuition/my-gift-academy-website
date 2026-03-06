@@ -91,10 +91,15 @@ export function Mission() {
   return (
     <section
       id="mission"
-      className="relative py-16 md:py-24 overflow-hidden"
+      className="relative py-16 md:py-24 overflow-hidden grain-overlay"
     >
-      {/* Background: warm ivory */}
-      <div className="absolute inset-0 bg-surface" />
+      {/* Background: warm accent band */}
+      <div className="absolute inset-0 bg-gradient-to-b from-surface via-surface-accent to-surface" />
+
+      {/* Golden Boy watermark — faint, centered */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[400px] opacity-[0.03] pointer-events-none select-none">
+        <img src="/assets/golden-boy/golden_boy.png" alt="" aria-hidden="true" className="w-full h-auto" />
+      </div>
 
       {/* Subtle gold radial glow */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full bg-gold-300/[0.06] blur-[200px]" />

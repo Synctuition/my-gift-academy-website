@@ -6,7 +6,7 @@ export function Imagine() {
   const { ref, isVisible } = useScrollReveal({ threshold: 0.2 })
 
   return (
-    <section id="imagine" className="relative py-28 md:py-40 overflow-hidden">
+    <section id="imagine" className="relative py-28 md:py-40 overflow-hidden grain-overlay">
       {/* Background: warm accent with gold glow */}
       <div className="absolute inset-0 bg-surface-accent" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-gold-200/20 blur-[200px]" />

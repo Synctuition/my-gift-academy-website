@@ -36,9 +36,11 @@ function TestimonialCard({ t, index }: { t: (typeof testimonials)[number]; index
 
 export function Testimonials() {
   return (
-    <section id="testimonials" className="relative py-24 md:py-32 overflow-hidden">
+    <section id="testimonials" className="relative py-24 md:py-32 overflow-hidden grain-overlay">
       {/* Background: warm accent */}
       <div className="absolute inset-0 bg-surface-accent" />
+      {/* Gold hairline */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/15 to-transparent" />
 
       {/* Ambient effect */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-gold-300/[0.08] blur-[120px]" />

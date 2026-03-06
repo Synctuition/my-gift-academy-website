@@ -82,9 +82,12 @@ function PillarCard({ pillar, index }: { pillar: (typeof aboutContent.pillars)[n
 
 export function About() {
   return (
-    <section id="about" className="relative py-24 md:py-32 overflow-hidden">
+    <section id="about" className="relative py-24 md:py-32 overflow-hidden grain-overlay">
       {/* Background: light gold tint */}
       <div className="absolute inset-0 bg-surface-accent" />
+      {/* Gold hairlines */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/15 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/15 to-transparent" />
 
       {/* Golden Boy watermark — top right */}
       <div className="absolute right-[-5%] md:right-[2%] top-[5%] w-[200px] md:w-[280px] opacity-[0.04] pointer-events-none select-none rotate-[-15deg]">

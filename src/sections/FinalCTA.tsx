@@ -8,10 +8,12 @@ export function FinalCTA() {
   return (
     <section
       id="final-cta"
-      className="relative py-32 md:py-44 overflow-hidden grain-overlay"
+      className="relative pt-44 md:pt-56 pb-32 md:pb-44 overflow-hidden grain-overlay"
     >
+      {/* Gradient transition from light → dark */}
+      <div className="absolute top-0 left-0 right-0 h-32 md:h-44 bg-gradient-to-b from-surface via-surface to-warm-900" />
       {/* Background: warm dark for contrast punch */}
-      <div className="absolute inset-0 bg-gradient-to-b from-warm-900 via-warm-800 to-warm-900" />
+      <div className="absolute top-32 md:top-44 inset-x-0 bottom-0 bg-gradient-to-b from-warm-900 via-warm-800 to-warm-900" />
 
       {/* Golden Boy watermark — centered, behind content */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] md:w-[450px] opacity-[0.06] pointer-events-none select-none">

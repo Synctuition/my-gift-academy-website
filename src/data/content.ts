@@ -142,37 +142,42 @@ export const whatsInsideContent = {
   eyebrow: 'What\'s Inside',
   title: 'Everything You Need to Awaken Your Gift',
   subtitle:
-    'A complete system of transformation — not a course you watch and forget, but a living practice you carry with you.',
+    'A complete ecosystem of transformation — film, books, live guidance, and community — designed to work together.',
   features: [
     {
-      title: 'Guided Video Modules',
-      description: 'Deep, cinematic lessons that take you through each stage of the Rebirth Process at your own pace.',
-      icon: 'play',
+      title: 'The My Gift Film',
+      description: 'A cinematic experience that opens the door to self-discovery. Watch, feel, and let the journey begin.',
+      icon: 'film',
     },
     {
-      title: 'Live Sessions',
-      description: 'Weekly live calls with expert facilitators for real-time guidance, reflection, and breakthroughs.',
-      icon: 'mic',
+      title: 'The My Gift Book',
+      description: 'The foundational text behind the Academy — a deep companion for the work of knowing yourself.',
+      icon: 'book',
     },
     {
-      title: 'Community Circles',
-      description: 'Small-group practice with fellow seekers — because transformation is not a solo act.',
-      icon: 'users',
-    },
-    {
-      title: 'Reflective Exercises',
-      description: 'Structured journaling, contemplation, and inner-work practices designed to build the muscle of self-knowledge.',
+      title: 'Workbooks & Exercises',
+      description: 'Structured journaling, reflective exercises, and inner-work practices that build the muscle of self-knowledge.',
       icon: 'pen',
     },
     {
-      title: 'Personal Roadmap',
-      description: 'A tailored transformation plan that maps your unique journey from where you are to where your gift wants to take you.',
-      icon: 'map',
+      title: 'The Clarity Test',
+      description: 'A guided self-assessment that reveals where you stand on your path — and what your next threshold looks like.',
+      icon: 'sparkle',
     },
     {
-      title: 'Mentorship Access',
-      description: 'Direct connection with experienced guides who have walked the path and can help you navigate yours.',
-      icon: 'compass',
+      title: 'Audio Journeys',
+      description: 'Immersive guided meditations and contemplation tracks designed to take you beneath the surface.',
+      icon: 'headphones',
+    },
+    {
+      title: 'Podcasts & Conversations',
+      description: 'In-depth dialogues with thinkers, seekers, and guides who have walked the path of awakened individuality.',
+      icon: 'mic',
+    },
+    {
+      title: 'Live Guidance',
+      description: 'Weekly live sessions with expert facilitators — real-time reflection, breakthroughs, and community.',
+      icon: 'broadcast',
     },
   ],
 }
@@ -232,17 +237,22 @@ export const applicationContent = {
     {
       number: '01',
       title: 'Apply',
-      description: 'Share a little about yourself and why this path calls to you. There are no wrong answers — only honest ones.',
+      description: 'Share a little about yourself and why this path calls to you.',
     },
     {
       number: '02',
       title: 'Connect',
-      description: 'A short personal conversation with our team to make sure the Academy is the right fit for your journey.',
+      description: 'A short personal conversation to ensure the Academy is right for you.',
     },
     {
       number: '03',
+      title: 'Prepare',
+      description: 'Receive your welcome materials and meet your cohort before day one.',
+    },
+    {
+      number: '04',
       title: 'Begin',
-      description: 'Receive your welcome, meet your cohort, and step across the threshold into the deepest work of your life.',
+      description: 'Step across the threshold into the deepest work of your life.',
     },
   ],
 }

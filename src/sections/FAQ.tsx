@@ -57,7 +57,7 @@ function FAQAccordionItem({ item, index }: { item: FAQItem; index: number }) {
 
 export function FAQ() {
   return (
-    <section id="faq" className="relative py-24 md:py-32 overflow-hidden">
+    <section id="faq" className="relative py-24 md:py-32 overflow-hidden grain-overlay">
       {/* Background */}
       <div className="absolute inset-0 bg-surface-warm" />
 

@@ -20,6 +20,8 @@ function ProfileCard({
       }`}
       style={{ transitionDelay: `${index * 120}ms` }}
     >
+      {/* Gold accent dot */}
+      <div className="w-2 h-2 rounded-full bg-accent mb-4" />
       <h3 className="font-[family-name:var(--font-display)] text-[length:var(--font-size-h3)] font-bold text-text-primary mb-3">
         {profile.title}
       </h3>
@@ -32,9 +34,12 @@ function ProfileCard({
 
 export function WhoItsFor() {
   return (
-    <section id="who" className="relative py-24 md:py-32 overflow-hidden">
-      {/* Background: warm gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-warm-100 via-warm-50 to-warm-100" />
+    <section id="who" className="relative py-24 md:py-32 overflow-hidden grain-overlay">
+      {/* Background: warm accent */}
+      <div className="absolute inset-0 bg-surface-accent" />
+      {/* Gold hairlines */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/15 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/15 to-transparent" />
 
       <Container className="relative z-10">
         <SectionHeading
@@ -42,17 +47,6 @@ export function WhoItsFor() {
           title={whoItsForContent.title}
           subtitle={whoItsForContent.subtitle}
         />
-
-        {/* Overwhelm foreground panel */}
-        <div className="relative w-full max-w-3xl mx-auto mb-14 rounded-2xl overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.10)]">
-          <img
-            src="/assets/stills/problem-overwhelm-1600.webp"
-            alt="The weight of information overload"
-            loading="lazy"
-            className="w-full h-auto block"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-warm-100/70 via-transparent to-transparent" />
-        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {whoItsForContent.profiles.map((profile, i) => (
